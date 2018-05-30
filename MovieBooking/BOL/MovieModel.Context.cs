@@ -27,5 +27,6 @@ namespace BOL
     
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Member> Members { get; set; }
+        public virtual DbSet<State> States { get; set; }
     }
 }

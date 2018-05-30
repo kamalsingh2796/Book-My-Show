@@ -27,6 +27,13 @@
           <Property Name="CustomerId" Type="int" Nullable="false" />
           <Property Name="TicketCost" Type="decimal" Precision="18" Scale="0" Nullable="false" />
         </EntityType>
+        <EntityType Name="States">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Members_Customers">
           <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
           <End Role="Members" Type="Self.Members" Multiplicity="*" />
@@ -42,6 +49,7 @@
         <EntityContainer Name="MovieBookingModelStoreContainer">
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Members" EntityType="Self.Members" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="States" EntityType="Self.States" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Members_Customers" Association="Self.FK_Members_Customers">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Members" EntitySet="Members" />
@@ -94,7 +102,15 @@
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Members" EntitySet="Members" />
           </AssociationSet>
+          <EntitySet Name="States" EntityType="MovieBookingModel.State" />
         </EntityContainer>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -122,6 +138,14 @@
                 <ScalarProperty Name="MemberName" ColumnName="MemberName" />
                 <ScalarProperty Name="MemberAge" ColumnName="MemberAge" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="MovieBookingModel.State">
+              <MappingFragment StoreEntitySet="States">
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

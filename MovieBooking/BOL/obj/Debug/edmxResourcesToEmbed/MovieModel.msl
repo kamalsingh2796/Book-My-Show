@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="MovieBookingModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
           <ScalarProperty Name="CId" ColumnName="CId" />
           <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
           <ScalarProperty Name="CustomerCity" ColumnName="CustomerCity" />
@@ -16,10 +17,19 @@
     <EntitySetMapping Name="Members">
       <EntityTypeMapping TypeName="MovieBookingModel.Member">
         <MappingFragment StoreEntitySet="Members">
+          <ScalarProperty Name="TicketCost" ColumnName="TicketCost" />
           <ScalarProperty Name="MId" ColumnName="MId" />
           <ScalarProperty Name="MemberName" ColumnName="MemberName" />
           <ScalarProperty Name="MemberAge" ColumnName="MemberAge" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="States">
+      <EntityTypeMapping TypeName="MovieBookingModel.State">
+        <MappingFragment StoreEntitySet="States">
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

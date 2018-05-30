@@ -22,3 +22,5 @@ c:\users\kamal singh\documents\visual studio 2013\Projects\MovieBooking\MovieBoo
 c:\users\kamal singh\documents\visual studio 2013\Projects\MovieBooking\MovieBooking\bin\BLL.pdb
 c:\users\kamal singh\documents\visual studio 2013\Projects\MovieBooking\MovieBooking\bin\BOL.pdb
 c:\users\kamal singh\documents\visual studio 2013\Projects\MovieBooking\MovieBooking\bin\EntityFramework.xml
+c:\users\kamal singh\documents\visual studio 2013\Projects\MovieBooking\MovieBooking\bin\EntityFramework.SqlServer.dll
+c:\users\kamal singh\documents\visual studio 2013\Projects\MovieBooking\MovieBooking\bin\EntityFramework.SqlServer.xml

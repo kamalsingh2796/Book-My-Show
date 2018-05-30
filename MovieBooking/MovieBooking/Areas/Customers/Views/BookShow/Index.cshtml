@@ -1,0 +1,105 @@
+﻿@model BOL.Customer
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Customer</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerName)
+                @Html.ValidationMessageFor(model => model.CustomerName)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.Label("StateId","State", new { @class = "control-label col-md-2" })
+            <div class="col-md-10"> 
+                @Html.DropDownList("StateId", string.Empty)
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerCity, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("CityId", new SelectList(string.Empty, "Value", "Text"), "Please select a city")
+                @Html.ValidationMessageFor(model => model.CustomerCity)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerContact, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerContact)
+                @Html.ValidationMessageFor(model => model.CustomerContact)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerAddress, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerAddress)
+                @Html.ValidationMessageFor(model => model.CustomerAddress)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerGender, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CustomerGender)
+                @Html.ValidationMessageFor(model => model.CustomerGender)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#StateId").change(function () {
+            debugger;
+            $("#CityId").empty();
+            $.ajax({
+                type: 'GET',
+                Url: '/Customers/BookShow/GetCities', //+ $("#StateId").val(),
+                data: { id: $("#StateId").val() },
+                dataType: 'json',
+                success: function (Cities) {
+                    debugger;
+                    alert('ran');
+                    //$.each(Cities, function (i, city) {
+                    //    $("#CityId").append('<option value="' + city.Value + '">' +
+                    //     city.Text + '</option>');
+                    //});
+                },
+                error: function (ex) {
+                    alert('Failed to retrieve Cities.' + ex);
+                }
+            });
+            return false;
+        })
+    });
+</script>
+
